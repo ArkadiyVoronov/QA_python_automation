@@ -1,0 +1,2 @@
+Мэтт Харрисон “как устроен python” глава 15 “Итерации”
+Python iterators - http://www.trytoprogram.com/python-programming/python-iterators/

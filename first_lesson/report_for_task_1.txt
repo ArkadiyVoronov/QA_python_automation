@@ -1,0 +1,265 @@
+    • Код отформатирован по стандарту pep8;
+    • В функциях есть докстринги;
+    • Цикломатическая сложность кода не более 4; #
+    • Индекс поддерживаемости как минимум 60%; #
+    • Мертвый код отсутствует. 60% уверенности достаточно чтобы посчитать код мертвым;
+    • В функциях есть аннотации; #
+    • Все импорты отсортированы правильно. #
+
+arc@arc-Nitro:~/PycharmProjects/qa_innopolis/first_lesson$ flake8 example.py
+example.py:1:1: D100 Missing docstring in public module
+example.py:7:1: F401 'numpy as np' imported but unused
+example.py:19:1: D400 First line should end with a period
+example.py:20:80: E501 line too long (108 > 79 characters)
+example.py:26:1: D103 Missing docstring in public function
+example.py:30:80: E501 line too long (83 > 79 characters)
+example.py:34:80: E501 line too long (94 > 79 characters)
+example.py:42:1: D202 No blank lines allowed after function docstring
+example.py:62:80: E501 line too long (81 > 79 characters)
+example.py:69:1: E402 module level import not at top of file
+example.py:94:1: D103 Missing docstring in public function
+example.py:96:5: F841 local variable 'now' is assigned to but never used
+example.py:112:9: F821 undefined name 'values'
+example.py:120:1: E402 module level import not at top of file
+example.py:122:1: E402 module level import not at top of file
+example.py:123:1: E402 module level import not at top of file
+example.py:130:13: W292 no newline at end of file
+
+---------------------------------------------------------------------------------------------------
+arc@arc-Nitro:~/PycharmProjects/qa_innopolis/first_lesson$ flake8 --docstring-convention pep257 example.py
+example.py:1:1: D100 Missing docstring in public module
+example.py:7:1: F401 'numpy as np' imported but unused
+example.py:19:1: D400 First line should end with a period
+example.py:20:80: E501 line too long (108 > 79 characters)
+example.py:26:1: D103 Missing docstring in public function
+example.py:30:80: E501 line too long (83 > 79 characters)
+example.py:34:80: E501 line too long (94 > 79 characters)
+example.py:42:1: D202 No blank lines allowed after function docstring
+example.py:62:80: E501 line too long (81 > 79 characters)
+example.py:69:1: E402 module level import not at top of file
+example.py:94:1: D103 Missing docstring in public function
+example.py:96:5: F841 local variable 'now' is assigned to but never used
+example.py:112:9: F821 undefined name 'values'
+example.py:120:1: E402 module level import not at top of file
+example.py:122:1: E402 module level import not at top of file
+example.py:123:1: E402 module level import not at top of file
+example.py:130:13: W292 no newline at end of file
+
+-------------------------------------------------------------------------------------------------
+(venv) arc@arc-Nitro:~/PycharmProjects/qa_innopolis/first_lesson$ black example.py --diff --color
+--- example.py  2022-02-12 04:20:38.080383 +0000
++++ example.py  2022-02-12 04:25:23.881242 +0000
+@@ -4,64 +4,69 @@
+ # from asyncio import sleep
+ import datetime
+ import random
+ import numpy as np
+ import boto3
++
+ # import tensorflow as tf
+ # import aiopg
+
+ import sqlite3
+
+-conn = sqlite3.connect('example.db')
++conn = sqlite3.connect("example.db")
+ c = conn.cursor()
+
+
+ def create_table():
+     """Создаёт бд"""
+-    c.execute("CREATE TABLE IF NOT EXISTS stuffToPlot(unix REAL, datestamp TEXT, keyword TEXT, value REAL)")
++    c.execute(
++        "CREATE TABLE IF NOT EXISTS stuffToPlot(unix REAL, datestamp TEXT, keyword TEXT, value REAL)"
++    )
+
+
+ create_table()
+
+
+ def dynamic_data_entry():
+     from time import sleep
+
+     unix = int(time.time())
+-    date = str(datetime.datetime.fromtimestamp(unix).strftime('%Y-%m-%d %H:%M:%S'))
+-    keyword = 'Python'
++    date = str(datetime.datetime.fromtimestamp(unix).strftime("%Y-%m-%d %H:%M:%S"))
++    keyword = "Python"
+     value = random.randrange(0, 100)
+
+-    c.execute("INSERT INTO stuffToPlot (unix, datestamp, keyword, value) VALUES (?, ?, ?, ?)",
+-              (unix, date, keyword, value))
++    c.execute(
++        "INSERT INTO stuffToPlot (unix, datestamp, keyword, value) VALUES (?, ?, ?, ?)",
++        (unix, date, keyword, value),
++    )
+
+     conn.commit()
+     sleep(1)
+
+
+ def read_from_db():
+     """Чтение из бд."""
+
+-    c.execute('SELECT * FROM stuffToPlot')
++    c.execute("SELECT * FROM stuffToPlot")
+     data = c.fetchall()
+     print(data)
+     for row in data:
+         print(row)
+
+-    c.execute('SELECT * FROM stuffToPlot WHERE value = 3')
++    c.execute("SELECT * FROM stuffToPlot WHERE value = 3")
+     data = c.fetchall()
+     print(data)
+     for row in data:
+         print(row)
+
+-    c.execute('SELECT * FROM stuffToPlot WHERE unix > 1452554972')
++    c.execute("SELECT * FROM stuffToPlot WHERE unix > 1452554972")
+     data = c.fetchall()
+     print(data)
+     for row in data:
+         print(row)
+
+-    c.execute('SELECT value, datestamp FROM stuffToPlot WHERE unix > 1452554972')
++    c.execute("SELECT value, datestamp FROM stuffToPlot WHERE unix > 1452554972")
+     data = c.fetchall()
+     print(data)
+     for row in data:
+         print(row[0])
+
+@@ -75,33 +80,33 @@
+ dir(boto3)
+
+
+ def graph_data():
+     """Рисует данные из таблицы."""
+-    c.execute('SELECT datestamp, value FROM stuffToPlot')
++    c.execute("SELECT datestamp, value FROM stuffToPlot")
+     data = c.fetchall()
+
+     dates = []
+     values = []
+
+     for row in data:
+         dates.append(parser.parse(row[0]))
+         values.append(row[1])
+
+-    plt.plot_date(dates, values, '-')
++    plt.plot_date(dates, values, "-")
+     plt.show()
+
+
+ def graph_data_new():
+     # Connect to database
+     now = datetime.now()
+-    sqlite_file = '/home/pi/scripts/database/climate.db'
++    sqlite_file = "/home/pi/scripts/database/climate.db"
+     conn = sqlite3.connect(sqlite_file)
+     c = conn.cursor()
+-    style.use('fivethirtyeight')
++    style.use("fivethirtyeight")
+
+-    c.execute('SELECT temperature, humidity, feelslike, timenow FROM external')
++    c.execute("SELECT temperature, humidity, feelslike, timenow FROM external")
+     data = c.fetchall()
+
+     temperature = []
+     humidity = []
+     feelslike = []
+@@ -109,22 +114,23 @@
+
+     for row in data:
+         timenow.append(parser.parse(row[0]))
+         values.append(row[1])
+
+-    plt.plot_date(temperature, humidity, feelslike, '-')
+-    plt.savefig('/home/pi/scripts/database/foo.png')
++    plt.plot_date(temperature, humidity, feelslike, "-")
++    plt.savefig("/home/pi/scripts/database/foo.png")
+     c.close()
+     conn.close()
+
+
+ import matplotlib.pyplot as plt
++
+ # import matplotlib.dates as mdates
+ from dateutil import parser
+ from matplotlib import style
+
+-style.use('fivethirtyeight')
++style.use("fivethirtyeight")
+
+ read_from_db()
+ graph_data()
+ c.close
+-conn.close()
+\ No newline at end of file
++conn.close()
+would reformat example.py
+
+All done! ✨ 🍰 ✨
+1 file would be reformatted.
+
+----------------------------------------------------------------------------------------------
+arc@arc-Nitro:~/PycharmProjects/qa_innopolis/first_lesson$ vulture example.py --min-confidence 60
+/home/arc/PycharmProjects/qa_innopolis/first_lesson/example.py:7: unused import 'np' (90% confidence)
+/home/arc/PycharmProjects/qa_innopolis/first_lesson/example.py:73: unused variable 'i' (60% confidence)
+/home/arc/PycharmProjects/qa_innopolis/first_lesson/example.py:94: unused function 'graph_data_new' (60% confidence)
+
+----------------------------------------------------------------------------------------------
+arc@arc-Nitro:~/PycharmProjects/qa_innopolis/first_lesson$ mypy example.py
+example.py:8: error: Skipping analyzing "boto3": module is installed, but missing library stubs or py.typed marker
+example.py:8: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+example.py:120: error: Skipping analyzing "matplotlib.pyplot": module is installed, but missing library stubs or py.typed marker
+example.py:120: error: Skipping analyzing "matplotlib": module is installed, but missing library stubs or py.typed marker
+example.py:122: error: Library stubs not installed for "dateutil" (or incompatible with Python 3.8)
+example.py:122: note: Hint: "python3 -m pip install types-python-dateutil"
+example.py:122: note: (or run "mypy --install-types" to install all missing stub packages)
+Found 4 errors in 1 file (checked 1 source file)
+
+-----------------------------------------------------------------------------------------------
+arc@arc-Nitro:~/PycharmProjects/qa_innopolis/first_lesson$ radon cc example.py -s
+example.py
+    F 41:0 read_from_db - A (5)
+    F 78:0 graph_data - A (2)
+    F 94:0 graph_data_new - A (2)
+    F 18:0 create_table - A (1)
+    F 26:0 dynamic_data_entry - A (1)
+F означает функцию, M означает метод, а C означает класс.
+main — это имя функции.
+4 — строка, с которой начинается функция.
+B — оценка от A до F. A — лучшая оценка, то есть наименьшая сложность.
+Число в скобках, 6, является цикломатической сложностью кода.
+
+-----------------------------------------------------------------------------------------------
+arc@arc-Nitro:~/PycharmProjects/qa_innopolis/first_lesson$ radon mi example.py -s
+example.py - A (67.36)
+
+-----------------------------------------------------------------------------------------------
+arc@arc-Nitro:~/PycharmProjects/qa_innopolis/first_lesson$ isort example.py --diff --color
+--- /home/arc/PycharmProjects/qa_innopolis/first_lesson/example.py:before       2022-02-12 09:20:38.080383
++++ /home/arc/PycharmProjects/qa_innopolis/first_lesson/example.py:after        2022-02-12 12:23:15.830788
+@@ -1,15 +1,16 @@
+ # from numpy.random import default_rng
+-import time
+-
+ # from asyncio import sleep
+ import datetime
+ import random
++import sqlite3
++import time
++
++import boto3
+ import numpy as np
+-import boto3
++
+ # import tensorflow as tf
+ # import aiopg
+
+-import sqlite3
+
+ conn = sqlite3.connect('example.db')
+ c = conn.cursor()
+

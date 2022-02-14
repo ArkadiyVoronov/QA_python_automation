@@ -1,0 +1,7 @@
+flake8==4.0.1
+flake8-docstrings==1.6.0
+black==22.1.0
+vulture==2.3
+mypy==0.931
+isort==5.10.1
+radon==5.1.0
