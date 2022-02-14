@@ -219,6 +219,7 @@ example.py:122: note: Hint: "python3 -m pip install types-python-dateutil"
 example.py:122: note: (or run "mypy --install-types" to install all missing stub packages)
 Found 4 errors in 1 file (checked 1 source file)
 
+TODO: mypy . --disallow-untyped-calls --disallow-untyped-defs --disallow-incomplete-defs --check-untyped-defs --disallow-untyped-decorators --ignore-missing-imports --pretty
 -----------------------------------------------------------------------------------------------
 arc@arc-Nitro:~/PycharmProjects/qa_innopolis/first_lesson$ radon cc example.py -s
 example.py
