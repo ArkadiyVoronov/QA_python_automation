@@ -1,0 +1,6 @@
+типичные проблемы с гитом и их решения -
+https://tproger.ru/translations/most-common-git-screwupsquestions-and-solutions/
+▪ Learn the workings of Git, not just the commands -
+https://developer.ibm.com/technologies/web-development/tutorials/d-learn-workings-git/
+▪ git merge conflicts - https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts
+▪ git cherry pick - https://www.atlassian.com/git/tutorials/cherry-pick
