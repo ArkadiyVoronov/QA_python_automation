@@ -5,3 +5,4 @@ vulture==2.3
 mypy==0.931
 isort==5.10.1
 radon==5.1.0
+pep257==0.7.0
