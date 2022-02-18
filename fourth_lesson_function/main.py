@@ -1,4 +1,6 @@
 # Написать игру
+# python3 -m unittest test_rpg.py
+# pytest -s
 
 def game():
     # Поприветствуем юзера
