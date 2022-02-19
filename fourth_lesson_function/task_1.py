@@ -7,8 +7,7 @@
 суффиксы eval, execute
 результат False
 """
-text = ['task_execute_many_taskprocessing']
-keyword = ['task, execute']
+
 
 
 
@@ -21,3 +20,6 @@ def check_valid_input():
     return True
 
 print(check_valid_input())
+
+text = ['task_execute_many_taskprocessing']
+keyword = ['task, execute']
