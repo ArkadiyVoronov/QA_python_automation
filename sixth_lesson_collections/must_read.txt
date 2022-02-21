@@ -1,0 +1,4 @@
+Laurent Luce - "Python list implementation" http://www.laurentluce.com/posts/python-list-implementation/
+web.mit “Map, Filter, Reduce” - https://web.mit.edu/6.005/www/fa15/classes/25-map-filter-reduce/
+itertools https://docs.python.org/3/library/itertools.html
+collections https://docs.python.org/3/library/collections.html
