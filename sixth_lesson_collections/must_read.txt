@@ -1,4 +1,6 @@
-Laurent Luce - "Python list implementation" http://www.laurentluce.com/posts/python-list-implementation/
-web.mit “Map, Filter, Reduce” - https://web.mit.edu/6.005/www/fa15/classes/25-map-filter-reduce/
-itertools https://docs.python.org/3/library/itertools.html
-collections https://docs.python.org/3/library/collections.html
+▪ Laurent Luce - "Python list implementation" http://www.laurentluce.com/posts/python-list-implementation/
+▪ web.mit “Map, Filter, Reduce” - https://web.mit.edu/6.005/www/fa15/classes/25-map-filter-reduce/
+▪ itertools https://docs.python.org/3/library/itertools.html
+▪ collections https://docs.python.org/3/library/collections.html
+▪ Наоми Седер “python экспресс курс” - Глава 5 “списки,кортежи и множества”
+▪ Мэтт Харрисон “Как устроен python” - глава 14 “контейнеры: списки, кортежи и множества”
