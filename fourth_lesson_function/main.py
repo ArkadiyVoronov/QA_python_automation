@@ -45,10 +45,20 @@ def sword() -> int:
 
 def apple() -> int:
     """
-    Это даёт яблоко
+    Это даёт яблоко,
+    случайный бонус к здоровью
     :return:
     """
-    print("Яблоко")
+    life_bonus = int(random.randint(1, 5))
+    hero_life_on_start()
+    hero_life += life_bonus
+    print("Вы нашли яблоко."
+          "Количество вашего здоровья выросло на:",
+          life_bonus,
+          " и составляет:",
+          hero_life)
+    return life_bonus
+
 
 def hero_life_on_start():
     """
