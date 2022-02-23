@@ -4,16 +4,27 @@
 
 import random
 
-def userChoise():
+
+def hero_life_on_start():
     """
-    Ввод юзера, управление на 1 и 2
+    Изначально у рыцаря не менее 10 жизни и 10 сила удара,
+    и счетчик монстров у нас на 0
     :return:
     """
-    i = int(input())
-    while( i != 1 or i != 2 ):
-        print("Только 1 или 2 нужно нажимать")
-        i = int(input())
-    return 1
+    hero_life = 10
+    hero_power = 10
+    monstr_counter = 0
+
+
+def user_turn() -> int:
+    """
+    Ход игрока, случайное число от 1 до 3:
+    встретили новый меч, яблоко или монстра
+    :return:
+    """
+    turn = int(random.randint(1, 3))
+    return turn
+
 
 def sword() -> int:
     """
@@ -60,29 +71,62 @@ def apple() -> int:
     return life_bonus
 
 
-def hero_life_on_start():
-    """
-    Изначально у рыцаря не менее 10 жизни и 10 сила удара,
-    и счетчик монстров у нас на 0
-    :return:
-    """
-    hero_life = 10
-    hero_power = 10
-    monstr_counter = 0
-
-
-
 def game():
     """
     Поприветствуем юзера и расскажем правила игры
     :return:
     """
     print("Привет, игрок!")
-    print("Вы рыцарь в фантастической стране.")
-    print("Ваша задача - победить 10 чудовищ,")
+    print("Ты рыцарь в фантастической стране.")
+    print("Твоя задача - победить 10 чудовищ,")
     print("чтобы спасти королевство от нападения и тем самым выиграть игру.")
     print("Управление происходит с помощью цифр '1' и '2'")
     print("Иди и сражайся!")
+
+    """
+    Начинаем игру
+    """
+    hero_life_on_start()
+    # Нам надо победить 10 монстров
+    while monstr_counter < 10:
+        # 1-яблочко, 2-новый меч, 3-монстр
+        next_turn = (user_turn())
+        if next_turn == 1:
+            apple()
+        if next_turn == 2:
+            sword()
+        if next_turn == 3:
+            monstr_life = int(random.randint(1, 20))
+            monstr_power = int()
+            print("Вы встретили огра!"
+                  "У него здоровья:", monstr_life,
+                  " и сила удара:", monstr_power,
+                  " ."
+                  "У вас здоровья:", hero_life,
+                  " и сила удара:", hero_power,
+                  " ."
+                  "Нажмите на 1, чтобы атаковать этого гада"
+                  "или 2, чтобы убежать от этого гада")
+            fight_or_chicken = int(input())
+            if fight_or_chicken == 1:
+                if hero_power > monstr_life:
+                    hero_life -= monstr_power
+                    if hero_life <= 0:
+                        print("Наступила смерть от ударов монстра!"
+                              "Попробуйте еще раз!")
+                        return False
+                    else:
+                        monstr_counter += 1
+                        print("Вы победили ", monstr_counter,
+                              " гадов."
+                              "Ваше здоровье:", hero_life)
+                else:
+                    print("Наступила смерть от ударов монстра!")
+                    return False
+            if fight_or_chicken == 2:
+                user_turn()
+        print("Победа! Мы победили 10 страшных монстров, ура!")
+
 
 # Главная функция, запустив которую начнется игра
 game()
