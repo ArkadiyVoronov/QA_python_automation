@@ -5,15 +5,14 @@
 import random
 
 
-def hero_life_on_start():
-    """
-    Изначально у рыцаря не менее 10 жизни и 10 сила удара,
-    и счетчик монстров у нас на 0
-    :return:
-    """
-    hero_life = 10
-    hero_power = 10
-    monstr_counter = 0
+"""
+Изначально у рыцаря не менее 10 жизни и 10 сила удара,
+и счетчик монстров у нас на 0
+:return:
+"""
+hero_life = 10
+hero_power = 10
+monstr_counter = 0
 
 
 def user_turn() -> int:
@@ -32,6 +31,7 @@ def sword() -> int:
     Игрок может взять меч(1) или нет(2)
     :return:
     """
+    global hero_power
     sw = int(random.randint(1, 10))
     print("Перед тобой меч силой атаки:",
           sw,
@@ -61,7 +61,7 @@ def apple() -> int:
     :return:
     """
     life_bonus = int(random.randint(1, 5))
-    hero_life_on_start()
+    global hero_life
     hero_life += life_bonus
     print("Вы нашли яблоко."
           "Количество вашего здоровья выросло на:",
@@ -86,11 +86,13 @@ def game():
     """
     Начинаем игру
     """
-    hero_life_on_start()
+    global hero_life
+    global hero_power
+    global monstr_counter
     # Нам надо победить 10 монстров
     while monstr_counter < 10:
         # 1-яблочко, 2-новый меч, 3-монстр
-        next_turn = (user_turn())
+        next_turn = user_turn()
         if next_turn == 1:
             apple()
         if next_turn == 2:
