@@ -1,6 +1,7 @@
 # Написать игру
 # python3 -m unittest test_rpg.py
 # pytest -s
+
 import random
 
 def userChoise():
@@ -14,15 +15,35 @@ def userChoise():
         i = int(input())
     return 1
 
-def sword():
+def sword() -> int:
     """
     Это даёт меч
+    Игрок может взять меч(1) или нет(2)
     :return:
     """
-    sw = random.randint(1,10)
-    print("Перед тобой меч силой в {sw}")
+    sw = int(random.randint(1, 10))
+    print("Перед тобой меч силой атаки:",
+          sw,
+          "Сейчас у вас меч силой атаки:",
+          hero_power,
+          "Нажмите 1 - взять новый меч "
+          "или 2 оставить прежний меч")
+    take_new_sword = int(input())
+    if take_new_sword == 1:
+        hero_power = sw
+        print("Вы взяли новый меч и ваша сила атаки:", hero_power,)
+        return hero_power
+    elif take_new_sword == 2:
+        print("Старый конь, борозды не портит,"
+              "ваша сила атаки:", hero_power)
+        return hero_power
+    else:
+        print("Управление через 1 и 2!")
+        take_new_sword = int(input())
+        return take_new_sword
 
-def apple():
+
+def apple() -> int:
     """
     Это даёт яблоко
     :return:
@@ -31,11 +52,13 @@ def apple():
 
 def hero_life_on_start():
     """
-    Изначально у рыцаря не менее 10 жизни и 10 сила удара
+    Изначально у рыцаря не менее 10 жизни и 10 сила удара,
+    и счетчик монстров у нас на 0
     :return:
     """
     hero_life = 10
     hero_power = 10
+    monstr_counter = 0
 
 
 

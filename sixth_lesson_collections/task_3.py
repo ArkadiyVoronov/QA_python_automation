@@ -12,7 +12,7 @@ from collections import Counter
 a = list(itertools.product(["A", "B", "C", "D"], ["A", "B", "C", "D"], ["A", "B", "C", "D"], ["A", "B", "C", "D"]))
 print(a)
 cntr = Counter()
-for letter in a.upper().split():
+for letter in a.split():
     cntr[letter] += 1
-
+# кибернетика
 print(cntr.most_common(2))
