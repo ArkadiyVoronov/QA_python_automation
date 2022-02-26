@@ -88,7 +88,7 @@ def event_game() -> int:
     return event_t
 
 
-def game():
+def game() -> None:
     """Поприветствуем юзера и расскажем правила игры."""
     print("Привет, игрок!")
     print("Ты рыцарь в фантастической стране.")
@@ -114,12 +114,13 @@ def game():
                 break
             elif m == 1:
                 monster_counter += 1
-                print("Победили очередного монстра, всего замочили:", monster_counter)
+                print("Победили очередного монстра, всего замочили:", monster_counter, " ")
                 print("После битвы осталось жизней:", hp)
             else:
                 print("Убежал, зато шкура цела.")
                 print("Новый ход, будь готов!")
-                return g
+    else:
+        print("ПОБЕДА")
 
 
 game()
