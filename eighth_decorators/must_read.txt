@@ -1,0 +1,2 @@
+▪ Документация Functools -https://docs.python.org/3.8/library/functools.html
+▪ Python Книга рецептов — Дэвид Бизли, Брайан К Джонс — глава 9 «Метапрограммирование»
