@@ -1,0 +1,19 @@
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+--- /dev/null	(date 1647334914556)
++++ b/.gitignore	(date 1647334914556)
+@@ -0,0 +1,9 @@
++/.idea/git_toolbox_prj.xml
++/.idea/inspectionProfiles/profiles_settings.xml
++/.idea/inspectionProfiles/Project_Default.xml
++/.idea/shelf/Uncommitted_changes_before_Update_at_15_03_2022,_12_30_[Changes]/shelved.patch
++/.idea/shelf/Uncommitted_changes_before_Update_at_15_03_2022,_12_33_[Changes]/shelved.patch
++/.idea/shelf/Uncommitted_changes_before_Update_at_15_03_2022__12_30__Changes_.xml
++/.idea/shelf/Uncommitted_changes_before_Update_at_15_03_2022__12_33__Changes_.xml
++/.idea/vcs.xml
++/.idea/workspace.xml
