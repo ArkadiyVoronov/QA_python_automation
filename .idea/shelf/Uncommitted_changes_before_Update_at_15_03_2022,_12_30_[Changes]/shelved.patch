@@ -1,0 +1,20 @@
+Index: токс_дз/toxexample_upd_jul2021/main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Тут будет Ваше исполнение ДЗ\r\n\r\ndef read_file() -> tuple:\r\n    \"\"\"Подготовим данные в файле.\"\"\"\r\n    with open(\"test.txt\", \"r\") as file:\r\n        crater_map = file.readlines()\r\n    crater_map = [[int(n) for n in x.split()] for x in crater_map]\r\n    return crater_map\r\n\r\n\r\ndef calculate(crater_map: list) -> int:\r\n    \"\"\"Подсчет кратеров.\"\"\"\r\n    count = 0\r\n    for i in range(len(crater_map)):\r\n        for j in range(len(crater_map[i])):\r\n            if crater_map[i][j] == 1:\r\n                find_crater(crater_map, i, j)\r\n                count += 1\r\n    return count\r\n\r\n\r\ndef find_crater(crater_map: list, x: int, y: int) -> list:\r\n    \"\"\"Проходим по массиву и ищем единицы.\"\"\"\r\n    if 0 <= x < len(crater_map) and 0 <= y < len(crater_map[0]):\r\n        if crater_map[x][y] == 1:\r\n            crater_map[x][y] = 0\r\n            find_crater(crater_map, x - 1, y)\r\n            find_crater(crater_map, x + 1, y)\r\n            find_crater(crater_map, x, y - 1)\r\n            find_crater(crater_map, x, y + 1)\r\n\r\n\r\nresult = calculate(read_file())\r\nprint(result)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/токс_дз/toxexample_upd_jul2021/main.py b/токс_дз/toxexample_upd_jul2021/main.py
+--- a/токс_дз/toxexample_upd_jul2021/main.py	(revision 64311a4522679ccd3de4222c5f65aaa0dd5ffbfa)
++++ b/токс_дз/toxexample_upd_jul2021/main.py	(date 1647271072462)
+@@ -7,6 +7,9 @@
+     crater_map = [[int(n) for n in x.split()] for x in crater_map]
+     return crater_map
+ 
++# TODO поменять
++
++
+ 
+ def calculate(crater_map: list) -> int:
+     """Подсчет кратеров."""
