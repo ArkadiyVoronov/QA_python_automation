@@ -1,0 +1,17 @@
+Как принудительно запросить переопределение метода в классе?
+
+все классы - наследники абстрактного класса ОБЯЗАНЫ
+переопределять абстрактные методы конкретными реализациями.
+
+Модуль abc из стандартной библиотеки python позволяет переопределять для классов методы isinstance и
+issubclass. Это возможно потому, что в метаклассе ABCMeta реализованы методы __subclasscheck__ и
+__instancecheck__.
+
+from abc import ABC
+
+class MyABC(ABC):
+    pass
+MyABC.register(tuple)
+
+issubclass(tuple, MyABC) # True
+isinstance((), MyABC) # True
