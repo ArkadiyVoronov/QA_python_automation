@@ -1,12 +1,18 @@
 """Основной модуль программы."""
+from abc import ABC, abstractmethod
 from engine.Engine import FromUssr
 from fuel_system.Fuel import FromDisel
 
 
-def rocket():
-    """Строим ракету."""
-    FromDisel(25, 'T1000', 10, 'disel')
-    FromUssr(120, 'B1', 4, 5)
+class RocketBuild(ABC):
+    """Абстрактный строитель ракеты."""
+    pass
 
 
-print(rocket())
+class RocketBuildSpacey(RocketBuild):
+    """Построим ракету."""
+    def __init__(self):
+        self.Engine = Engine
+        self.Fuel = Fuel
+        pass
+

@@ -1,7 +1,8 @@
 """Абстрактная фабрика топливных отсеков."""
+from abc import ABC, abstractmethod
 
 
-class Fuel:
+class Fuel(ABC):
     """Абстрактный класс топлива."""
 
     def __init__(self, volume, model, weight, type_f):
