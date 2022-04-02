@@ -75,17 +75,9 @@ def calculate(available_ingredients_list: list) -> List:
                 syrups_we_have[resource.get("ресурс")] = "сироп"
 
     # Инструкции по созданию кофе без добавок
-    dark_coffee = list(itertools.product(coffee_beans_we_have, water_we_have))
+    dark_coffee = list(itertools.product(coffee_beans_we_have, water_we_have, milk_we_have, syrups_we_have))
     instructions.append(dark_coffee)
-    # Инструкции по созданию кофе c молоком
-    white_coffee = list(itertools.product(dark_coffee, milk_we_have))
-    instructions.append(white_coffee)
-    # Инструкции по созданию кофе c сиропом
-    dark_coffee_with_syrup = list(itertools.product(dark_coffee, syrups_we_have))
-    instructions.append(dark_coffee_with_syrup)
-    # Инструкции по созданию кофе c молоком сиропом
-    white_coffee_with_syrup = list(itertools.product(white_coffee, syrups_we_have))
-    instructions.append(white_coffee_with_syrup)
+
 
     if not any(instructions):
         raise OutOfResourceError("Всё закончилось")
@@ -96,3 +88,4 @@ def calculate(available_ingredients_list: list) -> List:
 
 
 pp.pprint(calculate(available_ingredients))
+
