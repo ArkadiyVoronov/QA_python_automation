@@ -27,4 +27,4 @@ result = []
 
 
 print(result)
-print((itertools.combinations(available_ingredients, r=1)))
+print(list(itertools.combinations([{температура: теплая}, {температура:холодная}], [{размер:карлик},{размер: великан}])))
