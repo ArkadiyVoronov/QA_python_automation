@@ -3,7 +3,9 @@
 
 class Fuel:
     """Абстрактный класс топлива."""
+
     def __init__(self, volume, model, weight, type_f):
+        """Опишем свойства."""
         self.volume = volume
         self.model = model
         self.weight = weight
@@ -20,14 +22,18 @@ class Fuel:
 
 
 class FromDisel(Fuel):
-    """Построим топливную систему 1"""
+    """Построим топливную систему 1."""
+
     def __init__(self, volume, model, weight, type_f):
+        """Наследуем от класса родителя."""
         super().__init__(volume, model, weight, type_f)
         self.cons = 5.5  # расход движка
 
 
 class FromPetrol(Fuel):
-    """Построим топливную систему 2"""
+    """Построим топливную систему 2."""
+
     def __init__(self, volume, model, weight, type_f):
+        """Наследуем от класса родителя."""
         super().__init__(volume, model, weight, type_f)
         self.cons = 28.8

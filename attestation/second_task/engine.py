@@ -3,7 +3,9 @@
 
 class Engine:
     """Абстрактный класс топлива."""
+
     def __init__(self, speed, model, weight, power):
+        """Опишем свойства."""
         self.speed = speed
         self.model = model
         self.weight = weight
@@ -20,14 +22,18 @@ class Engine:
 
 
 class FromUsa(Engine):
-    """Построим двигатель 1"""
+    """Построим двигатель 1."""
+
     def __init__(self, speed, model, weight, power):
+        """Наследуем от класса родителя."""
         super().__init__(speed, model, weight, power)
         self.cons = 5.5  # расход движка
 
 
 class FromUssr(Engine):
-    """Построим двигатель 2"""
+    """Построим двигатель 2."""
+
     def __init__(self, speed, model, weight, power):
+        """Наследуем от класса родителя."""
         super().__init__(speed, model, weight, power)
         self.cons = 28.8
