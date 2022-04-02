@@ -27,4 +27,4 @@ result = []
 
 
 print(result)
-print(list(itertools.product(available_ingredients, repeat=1)))
+print((itertools.combinations(available_ingredients, r=1)))
