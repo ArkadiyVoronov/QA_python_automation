@@ -7,7 +7,7 @@ class TooMuchParametersException(Exception):
     """Create my exception."""
 
     def __init__(self: Any, message: str) -> None:
-        """Унаследуем из исключения."""
+        """Наследуем из исключения."""
         super().__init__(message)
 
 
