@@ -11,8 +11,7 @@ class Register(Validator):
 
     @log('Register new user')
     def new_register(self, data: RegisterModel, type_response=None):
-        # res = requests.post(f"{self.app.url}{self.POST_REGISTER}",
-        #                     json=data.to_dict())
         res = self.app.client.request('POST', f"{self.app.url}{self.POST_REGISTER}",
                             json=data.to_dict())
         return self.structure(res, type_response)
+
